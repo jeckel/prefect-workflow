@@ -11,6 +11,7 @@ services:
           target: /app
           ignore:
             - .venv/
+            - .git/
         - action: rebuild
           path: ./pyproject.toml
         - action: rebuild
