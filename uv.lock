@@ -835,6 +835,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/20/51/d06608c4e1b71fcf91a12aacc618c74e5e8f752b945b350db609945ba8e7/prefect-3.4.5-py3-none-any.whl", hash = "sha256:e95c2f65112d880dcea3b50572bfc087e89f0585475c4bf50652e5b33bdd134e", size = 6017873 },
 ]
 
+[package.optional-dependencies]
+sqlalchemy = [
+    { name = "prefect-sqlalchemy" },
+]
+
 [[package]]
 name = "prefect-github"
 version = "0.3.1"
@@ -849,17 +854,30 @@ wheels = [
 ]
 
 [[package]]
+name = "prefect-sqlalchemy"
+version = "0.5.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "prefect" },
+    { name = "sqlalchemy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fa/ad/694929d2f3139ce9d52e3b36dd09519cdc518d5a5e86872799a5cbef8416/prefect_sqlalchemy-0.5.3.tar.gz", hash = "sha256:c84482e00fa02c28a2b5229fc0b943e6bcd1c21d981b6f1e15def3828a051a95", size = 18010 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bd/7e/c18c9c6dd38237926b11646db9fa9534996310e82646ee077187893b9f20/prefect_sqlalchemy-0.5.3-py3-none-any.whl", hash = "sha256:e03d48313039e7cd30d67c244c3a81049a5e38cbd407e4cb35df40d45392dfb9", size = 14481 },
+]
+
+[[package]]
 name = "prefect-workflow"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "prefect" },
+    { name = "prefect", extra = ["sqlalchemy"] },
     { name = "prefect-github" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "prefect", specifier = ">=3.4.5" },
+    { name = "prefect", extras = ["sqlalchemy"], specifier = ">=3.4.5" },
     { name = "prefect-github", specifier = ">=0.3.1" },
 ]
 
