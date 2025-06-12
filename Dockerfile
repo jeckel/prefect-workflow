@@ -4,7 +4,7 @@ ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
 
 RUN apt-get update && apt-get install -y \
-    curl
+    curl git
 
 WORKDIR /app
 

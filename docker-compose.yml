@@ -20,10 +20,10 @@ services:
           path: ./Dockerfile
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4200/dashboard"]
-      interval: 10s
+      interval: 3s
       timeout: 5s
       retries: 10
-      start_period: 5s
+#      start_period: 5s
 
   prefect-worker:
     build: .
@@ -33,6 +33,7 @@ services:
       PREFECT_API_URL: http://prefect-server:4200/api
     depends_on:
       prefect-server: { condition: service_healthy }
+    restart: on-failure
     develop:
       watch:
         - action: sync
